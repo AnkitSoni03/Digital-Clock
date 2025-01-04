@@ -1,63 +1,74 @@
-*{
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-html,body{
-  display: grid;
-  height: 100%;
-  place-items: center;
-  background: #000;
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    font-family: 'Arial', sans-serif;
 }
-.wrapper{
-  height: 100px;
-  width: 360px;
-  position: relative;
-  background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
-  border-radius: 10px;
-  cursor: default;
-  animation: animate 1.5s linear infinite;
+
+.watch-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px;
 }
-.wrapper .display,
-.wrapper span{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+.watch {
+    background-color: #000;
+    padding: clamp(20px, 5vw, 40px);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    text-align: center;
+    width: 100%;
 }
-.wrapper .display{
-  z-index: 999;
-  height: 85px;
-  width: 345px;
-  background: #1b1b1b;
-  border-radius: 6px;
-  text-align: center;
+
+.time {
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: #0ff;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    font-family: 'Digital-7', monospace;
+    white-space: nowrap;
 }
-.display #time{
-  line-height: 85px;
-  color: #fff;
-  font-size: 50px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate 1.5s linear infinite;
+
+.date {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    color: #0ff;
+    margin-top: 10px;
+    opacity: 0.8;
 }
-@keyframes animate {
-  100%{
-    filter: hue-rotate(360deg);
-  }
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
 }
-.wrapper span{
-  height: 100%;
-  width: 100%;
-  border-radius: 10px;
-  background: inherit;
+
+.watch {
+    animation: glow 2s infinite;
 }
-.wrapper span:first-child{
-  filter: blur(7px);
-}
-.wrapper span:last-child{
-  filter: blur(20px);
+
+@media screen and (max-width: 400px) {
+    .watch {
+        padding: 15px;
+    }
+    
+    .time {
+        letter-spacing: -1px;
+    }
 }
